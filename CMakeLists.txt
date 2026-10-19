@@ -55,6 +55,9 @@ add_library(${CMAKE_PROJECT_NAME} MODULE
   src/caption-output.cpp
   src/pause-policy.cpp
   src/output-state.cpp
+  src/live-translate-protocol.cpp
+  src/live-caption-buffer.cpp
+  src/live-translate-session.cpp
 )
 # Spec 005 slices arrive independently. Watch only their explicit paths so a
 # subsequent build reconfigures when a new implementation is created.

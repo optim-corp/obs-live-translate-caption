@@ -18,6 +18,10 @@ add_executable(unit-tests
   test-caption-composer.cpp
   test-caption-wrap.cpp
   test-pause-policy.cpp
+  test-live-translate-protocol.cpp
+  test-live-caption-buffer.cpp
+  ${CMAKE_SOURCE_DIR}/src/live-translate-protocol.cpp
+  ${CMAKE_SOURCE_DIR}/src/live-caption-buffer.cpp
   ${CMAKE_SOURCE_DIR}/src/pause-policy.cpp
   ${CMAKE_SOURCE_DIR}/src/audio-convert.cpp
   ${CMAKE_SOURCE_DIR}/src/backoff.cpp
@@ -67,6 +71,14 @@ add_module_test(pause-policy
 )
 add_module_test(ring-buffer
   ${CMAKE_SOURCE_DIR}/src/ring-buffer.cpp
+)
+# Spec 007: two-way live translate engine.
+add_module_test(live-translate-protocol
+  ${CMAKE_SOURCE_DIR}/src/live-translate-protocol.cpp
+)
+add_module_test(live-caption-buffer
+  ${CMAKE_SOURCE_DIR}/src/live-caption-buffer.cpp
+  ${CMAKE_SOURCE_DIR}/src/caption-wrap.cpp
 )
 
 # Watch planned files even while absent; never create a test executable until

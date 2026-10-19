@@ -178,6 +178,20 @@ closed**:
    starts; leave it off to test captions before going live. A paused session
    still clears the caption after **Caption Hold**.
 
+### Two-way captions (preview)
+
+Set **Caption Engine** to *Two-way: live translate*. The filter then runs two
+`gemini-3.5-live-translate-preview` sessions on the same microphone, one per
+language (default **Language A** = Japanese, **Language B** = English). Each
+session stays silent for speech already in its own language, so Japanese
+speech appears in **Captions in Language B** and English speech in
+**Captions in Language A**. Add one text source for each. Box, hold and
+auto-pause settings are shared with the one-way engine. Audio is billed for
+both sessions. Remote-control keys: `engine` (`transcribe` / `live_two_way`),
+`two_way_lang_a`, `two_way_lang_b`, `two_way_caption_a_text_source`,
+`two_way_caption_b_text_source`. See
+[docs/specs/007-two-way-live-translate.md](docs/specs/007-two-way-live-translate.md).
+
 ## Remote control (OBS WebSocket)
 
 The filter's settings are plain OBS source settings, so you can change the
@@ -467,8 +481,8 @@ translate *into*.
 
 ## Non-goals
 
-Multiple simultaneous sessions (two target languages at once), speech-to-speech
-output, encrypted key storage, and explicit source-language selection are out
+More than one language pair at once (the two-way engine covers exactly two
+languages), speech-to-speech output, encrypted key storage, and explicit source-language selection are out
 of scope. The plugin only updates an existing OBS text source: it does not
 create or style sources, write caption files (SRT/TXT), or embed CEA-608
 captions into the stream output — see the non-goals tables in
