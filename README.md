@@ -489,6 +489,22 @@ captions into the stream output — see the non-goals tables in
 [`docs/specs/001-caption-translation-pipeline.md`](docs/specs/001-caption-translation-pipeline.md)
 and [`docs/specs/003-remove-speech-mode.md`](docs/specs/003-remove-speech-mode.md).
 
+## Acknowledgments
+
+Special thanks to **mintonnee** for developing
+[obs-live-translate-caption](https://github.com/mintonnee/obs-live-translate-caption),
+which adapted the original speech-to-speech plugin into a captions-focused
+project. Its live translated captions, caption display improvements, and
+caption-processing pipeline provide the foundation for our work here.
+
+We also thank **Only26k (weisunglee)** and the contributors to
+[obs-live-translate](https://github.com/weisunglee/obs-live-translate), the
+original project that supplied the build system, installer, audio capture
+and chunking, and speech-to-speech pipeline.
+
+We appreciate both projects sharing their work under GPLv2, allowing us to
+build on these contributions.
+
 ## License
 
 Licensed under the GNU General Public License v2.0 — see [LICENSE](LICENSE).

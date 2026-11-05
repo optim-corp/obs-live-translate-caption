@@ -404,6 +404,21 @@ nlohmann/json · Catch2.
 [`docs/specs/003-remove-speech-mode.md`](docs/specs/003-remove-speech-mode.md)의 비목표 표를
 참고하세요.
 
+## 감사의 말
+
+원래의 음성→음성 번역 플러그인을 자막 중심 프로젝트로 발전시킨
+[obs-live-translate-caption](https://github.com/mintonnee/obs-live-translate-caption)을
+개발해 주신 **mintonnee** 님께 특별히 감사드립니다. 실시간 번역 자막 기능, 자막 표시 개선,
+자막 처리 파이프라인은 이 저장소에서 이어 가는 개발의 기반이 되었습니다.
+
+또한 원 프로젝트
+[obs-live-translate](https://github.com/weisunglee/obs-live-translate)의
+**Only26k (weisunglee)** 님과 기여자 여러분께도 감사드립니다. 빌드 시스템, 인스톨러,
+오디오 캡처 및 청킹, 음성→음성 파이프라인은 이 원 프로젝트에서 비롯되었습니다.
+
+두 프로젝트가 GPLv2로 작업을 공개해 주신 덕분에 이러한 기여를 바탕으로 개발을
+이어 갈 수 있었습니다.
+
 ## 라이선스
 
 GNU General Public License v2.0으로 배포합니다. [LICENSE](LICENSE)를 참고하세요. 플러그인이
