@@ -1,13 +1,15 @@
 ; Inno Setup script for OBS Live Translate Caption.
 ; Compiled in CI with:  ISCC /DMyAppVersion=<version> installer\obs-live-translate-caption.iss
 ; Installs the plugin DLL into the detected OBS Studio install directory.
+; Modified by OPTiM Corporation on 2026-11-05:
+; Updated repository and support URLs for this fork.
 
 #ifndef MyAppVersion
   #define MyAppVersion "0.0.0"
 #endif
 #define MyAppName "OBS Live Translate Caption"
 #define MyAppPublisher "plan12be"
-#define MyAppURL "https://github.com/mintonnee/obs-live-translate-caption"
+#define MyAppURL "https://github.com/optim-corp/obs-live-translate-caption"
 
 [Setup]
 ; Keep AppId stable across versions so upgrades/uninstall work.

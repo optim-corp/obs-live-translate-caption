@@ -2,8 +2,7 @@
 
 **English** | [한국어](README.ko.md)
 
-[![Latest release](https://img.shields.io/github/v/release/mintonnee/obs-live-translate-caption?sort=semver)](https://github.com/mintonnee/obs-live-translate-caption/releases)
-[![Release build](https://github.com/mintonnee/obs-live-translate-caption/actions/workflows/release.yaml/badge.svg)](https://github.com/mintonnee/obs-live-translate-caption/actions/workflows/release.yaml)
+[![Latest release](https://img.shields.io/github/v/release/optim-corp/obs-live-translate-caption?sort=semver)](https://github.com/optim-corp/obs-live-translate-caption/releases)
 [![License: GPL v2](https://img.shields.io/badge/license-GPLv2-blue.svg)](LICENSE)
 ![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
 
@@ -13,10 +12,12 @@ text with `gemini-3.5-transcribe-live`, per-sentence translation with a
 Flash-Lite model (default `gemini-3.1-flash-lite`), written into an OBS text
 source you style yourself — a subtitle overlay for streams and recordings.
 
-This repository started as a fork of
+This repository builds on
+[mintonnee/obs-live-translate-caption](https://github.com/mintonnee/obs-live-translate-caption),
+which adapted
 [weisunglee/obs-live-translate](https://github.com/weisunglee/obs-live-translate)
-(a speech-to-speech plugin) and is now a standalone, captions-only project;
-the speech-to-speech output was removed (see
+from a speech-to-speech plugin into a captions-focused project.
+This version adds a two-way caption engine. The speech-to-speech output was removed (see
 [`docs/specs/003-remove-speech-mode.md`](docs/specs/003-remove-speech-mode.md)).
 The original project's history and GPLv2 license are kept.
 
@@ -49,10 +50,9 @@ Notes:
 
 See [CHANGELOG.md](CHANGELOG.md) for release-by-release changes.
 
-Builds for **Windows, macOS and Linux**. Prebuilt packages are published on
-this repository's
-[Releases](https://github.com/mintonnee/obs-live-translate-caption/releases) page
-once a version tag is pushed; until then, build from source (see below). The
+Builds for **Windows, macOS and Linux**.
+[Releases](https://github.com/optim-corp/obs-live-translate-caption/releases) page
+manually after validation; until then, build from source (see below). The
 speech-only releases of the original project remain at
 [weisunglee/obs-live-translate](https://github.com/weisunglee/obs-live-translate/releases).
 Windows is the tested platform; see the note under *Install*. Current behavior:
@@ -86,11 +86,12 @@ Windows is the tested platform; see the note under *Install*. Current behavior:
   virtual camera is running, so an idle OBS does not keep billing audio; audio
   is buffered through the pause and the first words after it are kept. See
   [`docs/specs/004-idle-pause-and-output-gating.md`](docs/specs/004-idle-pause-and-output-gating.md).
-- ✅ Single-session by design. If a source has two *Gemini Translate Caption*
+- ✅ One microphone source by design. The one-way engine uses one STT session;
+  the two-way engine uses two translation sessions. If a source has two *Gemini Translate Caption*
   filters, only the first runs; the extra is disabled with a warning in its
   properties (removing the first lets the other take over). Note: the plugin
-  runs a single STT stream, so adding the **filter to two different sources**
-  is unsupported (both would feed the one session) — keep it on a single
+  shares its engine across filters, so adding the **filter to two different sources**
+  is unsupported (both would feed the shared engine) — keep it on a single
   source.
 - ❌ The speech-to-speech output of the original project (the *Gemini
   Translated Audio* source, echo and playback-delay options) was removed. This
@@ -100,7 +101,7 @@ Windows is the tested platform; see the note under *Install*. Current behavior:
 ## Install (prebuilt)
 
 Download the package for your platform from the
-[Releases](https://github.com/mintonnee/obs-live-translate-caption/releases) page
+[Releases](https://github.com/optim-corp/obs-live-translate-caption/releases) page
 (or build it yourself, see *Build from source*), then install it **with OBS
 closed**:
 
@@ -115,8 +116,8 @@ closed**:
   (the `.so` should end up at
   `~/.config/obs-studio/plugins/obs-live-translate-caption/bin/64bit/obs-live-translate-caption.so`).
 
-> The macOS and Linux packages are produced by CI but **not yet verified on those
-> platforms** — feedback is welcome. Windows is the tested platform.
+> Runtime behavior on macOS and Linux is **not yet verified** — feedback is
+> welcome. Windows is the tested platform.
 
 ## Usage
 
@@ -377,7 +378,8 @@ cmake --preset ubuntu-x86_64 -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
 cmake --build --preset ubuntu-x86_64 --target obs-live-translate-caption   # build_x86_64/obs-live-translate-caption.so
 ```
 
-(The exact CI steps live in [`.github/workflows/release.yaml`](.github/workflows/release.yaml).)
+Builds, tests, and release uploads are run manually. GitHub Actions is disabled
+for this repository.
 
 ## Test
 

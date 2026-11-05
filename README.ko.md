@@ -2,8 +2,7 @@
 
 [English](README.md) | **한국어**
 
-[![Latest release](https://img.shields.io/github/v/release/mintonnee/obs-live-translate-caption?sort=semver)](https://github.com/mintonnee/obs-live-translate-caption/releases)
-[![Release build](https://github.com/mintonnee/obs-live-translate-caption/actions/workflows/release.yaml/badge.svg)](https://github.com/mintonnee/obs-live-translate-caption/actions/workflows/release.yaml)
+[![Latest release](https://img.shields.io/github/v/release/optim-corp/obs-live-translate-caption?sort=semver)](https://github.com/optim-corp/obs-live-translate-caption/releases)
 [![License: GPL v2](https://img.shields.io/badge/license-GPLv2-blue.svg)](LICENSE)
 ![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
 
@@ -12,8 +11,10 @@
 문장 단위로 Flash-Lite 모델(기본 `gemini-3.1-flash-lite`)이 번역해, 직접 꾸민 OBS 텍스트 소스에
 써 넣습니다. 방송과 녹화용 자막 오버레이입니다.
 
-이 저장소는 [weisunglee/obs-live-translate](https://github.com/weisunglee/obs-live-translate)
-(음성→음성 번역 플러그인)의 포크로 시작해 지금은 자막 전용 독립 프로젝트가 되었습니다. 음성 출력
+이 저장소는 [mintonnee/obs-live-translate-caption](https://github.com/mintonnee/obs-live-translate-caption)을
+바탕으로 합니다. 이 프로젝트는 원래의 음성→음성 번역 플러그인
+[weisunglee/obs-live-translate](https://github.com/weisunglee/obs-live-translate)을 자막 중심으로
+발전시켰으며, 이 회사 버전에서는 양방향 자막 엔진을 추가했습니다. 음성 출력
 기능은 제거했습니다([`docs/specs/003-remove-speech-mode.md`](docs/specs/003-remove-speech-mode.md)
 참고). 원 프로젝트의 히스토리와 GPLv2 라이선스는 그대로 유지합니다.
 
@@ -38,9 +39,9 @@
 
 ## 현재 상태
 
-**Windows, macOS, Linux**용으로 빌드됩니다. 버전 태그를 푸시하면 이 저장소의
-[Releases](https://github.com/mintonnee/obs-live-translate-caption/releases) 페이지에 빌드된
-패키지가 올라갑니다. 그 전에는 소스에서 빌드하세요(아래 참고). 원 프로젝트의 음성 전용 릴리스는
+**Windows, macOS, Linux**용으로 빌드됩니다. 검증 후 이 저장소의
+[Releases](https://github.com/optim-corp/obs-live-translate-caption/releases) 페이지에 빌드된
+회사 릴리스 패키지를 수동으로 올릴 예정입니다. 그 전에는 소스에서 빌드하세요(아래 참고). 원 프로젝트의 음성 전용 릴리스는
 [weisunglee/obs-live-translate](https://github.com/weisunglee/obs-live-translate/releases)에 그대로
 있습니다. 테스트한 플랫폼은 Windows입니다. 릴리즈별 변경은
 [CHANGELOG.md](CHANGELOG.md)를 참고하세요. *설치* 항목의 안내를 참고하세요. 현재 동작:
@@ -77,7 +78,7 @@
 
 ## 설치 (빌드된 패키지)
 
-[Releases](https://github.com/mintonnee/obs-live-translate-caption/releases) 페이지에서 플랫폼에 맞는
+[Releases](https://github.com/optim-corp/obs-live-translate-caption/releases) 페이지에서 플랫폼에 맞는
 패키지를 내려받거나(또는 *소스에서 빌드* 참고) 직접 빌드한 뒤, **OBS를 닫은 상태에서** 설치합니다.
 
 - **Windows** — `…-windows-x64-installer.exe`를 실행하거나(OBS 설치 위치를 자동으로 찾습니다)
@@ -92,7 +93,7 @@
   `~/.config/obs-studio/plugins/obs-live-translate-caption/bin/64bit/obs-live-translate-caption.so`
   위치에 있어야 합니다).
 
-> macOS와 Linux 패키지는 CI가 만들지만 **해당 플랫폼에서 아직 검증하지 않았습니다**. 피드백을
+> macOS와 Linux의 실행 동작은 **해당 플랫폼에서 아직 검증하지 않았습니다**. 피드백을
 > 환영합니다. 테스트한 플랫폼은 Windows입니다.
 
 ## 사용법
@@ -303,7 +304,7 @@ cmake --preset ubuntu-x86_64 -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
 cmake --build --preset ubuntu-x86_64 --target obs-live-translate-caption   # build_x86_64/obs-live-translate-caption.so
 ```
 
-(정확한 CI 단계는 [`.github/workflows/release.yaml`](.github/workflows/release.yaml)에 있습니다.)
+빌드, 테스트, 릴리스 업로드는 수동으로 실행합니다. 회사 저장소의 GitHub Actions는 비활성화되어 있습니다.
 
 ## 테스트
 

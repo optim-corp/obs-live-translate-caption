@@ -5,6 +5,27 @@ project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Preview two-way captions using two `gemini-3.5-live-translate-preview`
+  sessions, with separate text sources for Language A and Language B.
+- Session rotation and watchdogs for stalled two-way transcription or translation.
+- Korean two-way settings and usage instructions.
+- An OBS-independent unit-test configuration for manual validation.
+
+### Changed
+
+- Point repository and support links to `optim-corp/obs-live-translate-caption`,
+  while preserving upstream acknowledgments and copyright notices.
+- Remove GitHub Actions build/test and release workflows. Company builds,
+  tests, and release uploads are performed manually; Actions is disabled.
+
+### Validation
+
+- All 526 CTest cases and native plugin builds passed on Windows, macOS, and
+  Linux in [company CI](https://github.com/optim-corp/obs-live-translate-caption/actions/runs/41975613559).
+- The complete two-way live OBS verification checklist remains pending.
+
 ## [1.1.0] - 2026-09-12
 
 ### Added
@@ -63,7 +84,7 @@ project follows [Semantic Versioning](https://semver.org/).
 - Live Gemini transcription, per-sentence translation, OBS text-source output,
   configurable wrapping and hold time, reconnect handling and idle auto-pause.
 
-[Unreleased]: https://github.com/mintonnee/obs-live-translate-caption/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/optim-corp/obs-live-translate-caption/commits/main
 [1.1.0]: https://github.com/mintonnee/obs-live-translate-caption/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/mintonnee/obs-live-translate-caption/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/mintonnee/obs-live-translate-caption/releases/tag/v1.0.0
