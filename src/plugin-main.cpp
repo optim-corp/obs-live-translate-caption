@@ -1,4 +1,5 @@
 #include "caption-session.hpp"
+#include "live-translate-session.hpp"
 #include "output-state.hpp"
 #include <obs-module.h>
 
@@ -34,5 +35,8 @@ void obs_module_unload(void)
     auto &captions = lt::CaptionSession::instance();
     captions.stop();
     captions.set_sinks({}, {});
+    auto &two_way = lt::TwoWayTranslate::instance();
+    two_way.stop();
+    two_way.set_sinks({}, {}, {});
     blog(LOG_INFO, "[live-translate] module unloaded");
 }

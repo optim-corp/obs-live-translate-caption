@@ -1,5 +1,6 @@
 #include "output-state.hpp"
 #include "caption-session.hpp"
+#include "live-translate-session.hpp"
 #include <atomic>
 #include <obs-frontend-api.h>
 #include <obs-module.h>
@@ -26,6 +27,7 @@ void publish_output_active()
     bool active = query_output_active();
     bool was = g_active.exchange(active);
     CaptionSession::instance().set_output_active(active);
+    TwoWayTranslate::instance().set_output_active(active);
     if (was != active)
         blog(LOG_INFO, "[live-translate] output active: %s",
              active ? "true" : "false");
@@ -61,6 +63,7 @@ void output_state_init()
     // OBS is already streaming would otherwise stay "inactive" until it stops.
     g_active.store(query_output_active());
     CaptionSession::instance().set_output_active(g_active.load());
+    TwoWayTranslate::instance().set_output_active(g_active.load());
 }
 
 void output_state_shutdown()
